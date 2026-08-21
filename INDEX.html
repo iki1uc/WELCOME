@@ -577,6 +577,20 @@ document.addEventListener('keydown', (e) => {
 // ─── INIT ──────────────────────────────────────────────────
 log('🏠 INDEX · 9× Leben · Lernmodus · Hilfsvorschläge');
 log('⌨️ 1–9 für Themen, E für Notfall, R für Reset');
+
+<!-- WELCOME · Modul -->
+<div id="welcome-container"></div>
+
+<script>
+fetch("WELCOME.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("welcome-container").innerHTML = html;
+  });
+</script>
+</body>
+</html>
+
 </script>
 </body>
 </html>
