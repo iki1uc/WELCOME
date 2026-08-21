@@ -718,7 +718,21 @@ document.getElementById('btnAuto').addEventListener('click', toggleAuto);
 boot();
 log('⚡ UNSTERBLICHKEITS-ENGINE — bereit', 'unsterblich');
 log('⌨️  ZUG = Zug | SCORE = Score | MASSE = Slide | AIR = Air | UNSTERBLICH = Unsterblichkeit', 'warn');
+
+<!-- WELCOME · Modul -->
+<div id="welcome-container"></div>
+
+<script>
+fetch("WELCOME.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("welcome-container").innerHTML = html;
+  });
 </script>
+
+
+</script>
+  
 
 </body>
 </html>
