@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INDEX · 9× Leben · Lernen · Hilfe · Selbstbestimmt</title>
+
+<style>
+  :root {
+    --bg: #0a0a12;
+    --gold: #ffaa00;
+    --green: #4f4;
+    --blue: #4af;
+    --red: #f44;
+    --purple: #a4f;
+    --white: #eee;
+    --text: #eee;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  header {
+    text-align: center;
+    padding: 30px 0 20px 0;
+    border-bottom: 2px solid var(--gold);
+    margin-bottom: 25px;
+  }
+  header h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, var(--gold), var(--blue), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  header p {
+    color: #888;
+    font-size: 1.1rem;
+    margin-top: 8px;
+  }
+
+  /* ─── GRID 9× ────────────────────────────────────────────── */
+  .grid-9 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+  @media (max-width: 800px) { .grid-9 { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .grid-9 { grid-template-columns: 1fr; } }
+
+  .card {
+    background: #111;
+    border: 2px solid #2a2a3a;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 40px rgba(255,170,0,0.1);
+  }
+  .card .icon { font-size: 32px; display: block; margin-bottom: 6px; }
+  .card .title { font-size: 1rem; font-weight: bold; color: #fff; }
+  .card .desc { font-size: 0.75rem; color: #888; margin-top: 4px; }
+  .card .badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--gold);
+    color: #000;
+    font-size: 0.6rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+  }
+  .card .badge.hard { background: var(--red); color: #fff; }
+  .card .badge.learning { background: var(--blue); color: #fff; }
+
+  .card.highlight { border-color: var(--gold); background: #1a1a0a; }
+
+  /* ─── SUCHLEISTE ──────────────────────────────────────────── */
+  .search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .search-bar input {
+    flex: 1;
+    background: #111;
+    color: #fff;
+    border: 2px solid #2a2a3a;
+    padding: 14px 20px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  .search-bar input:focus {
+    border-color: var(--gold);
+    outline: none;
+  }
+  .search-bar button {
+    background: var(--gold);
+    color: #000;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .search-bar button:hover { transform: scale(1.02); }
+
+  /* ─── AUSGABE ────────────────────────────────────────────── */
+  .output-area {
+    margin-top: 25px;
+    background: #0a0a1a;
+    border: 2px solid #1a1a2a;
+    border-radius: 14px;
+    padding: 25px;
+    min-height: 120px;
+    transition: 0.3s;
+  }
+  .output-area .title { color: var(--gold); font-size: 1.2rem; font-weight: bold; }
+  .output-area .content { color: #aaa; margin-top: 8px; line-height: 1.6; }
+  .output-area .suggestions {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: #111;
+    border-radius: 8px;
+    border-left: 4px solid var(--gold);
+  }
+  .output-area .suggestions li {
+    list-style: none;
+    padding: 4px 0;
+    color: #ccc;
+  }
+  .output-area .suggestions li::before { content: "💡 "; color: var(--gold); }
+
+  /* ─── HILFSBUTTONS ────────────────────────────────────────── */
+  .help-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+  }
+  .help-row button {
+    background: #1a1a2a;
+    color: #fff;
+    border: 2px solid #333;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.3s;
+  }
+  .help-row button:hover { border-color: var(--gold); background: #2a2a3a; }
+  .help-row button.emergency { border-color: var(--red); color: var(--red); }
+  .help-row button.emergency:hover { background: var(--red); color: #000; }
+
+  /* ─── LOG ────────────────────────────────────────────────── */
+  #log {
+    margin-top: 20px;
+    background: #0a0a1a;
+    border-radius: 10px;
+    padding: 12px;
+    max-height: 100px;
+    overflow-y: auto;
+    border: 1px solid #1a1a2a;
+    font-size: 0.8rem;
+    color: #666;
+  }
+  #log .entry { padding: 3px 0; border-bottom: 1px solid #0a0a12; }
+  #log .time { color: #444; margin-right: 8px; }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: #444;
+    font-size: 0.75rem;
+    border-top: 1px solid #1a1a2a;
+    margin-top: 25px;
+  }
+  footer span { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>🏠 9× Leben · Lernen · Hilfe</h1>
+    <p>Wähle einen Bereich – ich zeige dir Wege, ohne zu bevormunden.</p>
+  </header>
+
+  <!-- ─── SUCHLEISTE ─────────────────────────────────────────── -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="🔍 Was beschäftigt dich? z.B. 'Wohnung', 'Arbeit', 'Hobby' ..." aria-label="Suche nach Themen">
+    <button onclick="searchTopic()">Suchen</button>
+  </div>
+
+  <!-- ─── 9× GRID ────────────────────────────────────────────── -->
+  <div class="grid-9" id="cardGrid">
+
+    <!-- 1 – SCHWIERIGSTE BEGLEITUNG -->
+    <div class="card highlight" onclick="selectCard('schwer')" data-topic="schwer" tabindex="0" role="button">
+      <span class="badge hard">⚡ Besonders</span>
+      <span class="icon">🛡️</span>
+      <span class="title">Schwierige Lebenslagen</span>
+      <span class="desc">Begleitung in schweren Zeiten</span>
+    </div>
+
+    <!-- 2 – WOHNEN -->
+    <div class="card" onclick="selectCard('wohnen')" data-topic="wohnen" tabindex="0" role="button">
+      <span class="icon">🏠</span>
+      <span class="title">Wohnen & Zuhause</span>
+      <span class="desc">Wohnung, Miete, Umzug, Nachbarschaft</span>
+    </div>
+
+    <!-- 3 – ARBEIT -->
+    <div class="card" onclick="selectCard('arbeit')" data-topic="arbeit" tabindex="0" role="button">
+      <span class="icon">💼</span>
+      <span class="title">Arbeit & Beruf</span>
+      <span class="desc">Jobsuche, Bewerbung, Karriere, Kündigung</span>
+    </div>
+
+    <!-- 4 – GESUNDHEIT -->
+    <div class="card" onclick="selectCard('gesundheit')" data-topic="gesundheit" tabindex="0" role="button">
+      <span class="icon">❤️</span>
+      <span class="title">Gesundheit & Wohlbefinden</span>
+      <span class="desc">Krankenkasse, Arzt, Psyche, Vorsorge</span>
+    </div>
+
+    <!-- 5 – FINANZEN -->
+    <div class="card" onclick="selectCard('finanzen')" data-topic="finanzen" tabindex="0" role="button">
+      <span class="icon">💰</span>
+      <span class="title">Finanzen & Vorsorge</span>
+      <span class="desc">Schulden, Steuern, Rente, Versicherung</span>
+    </div>
+
+    <!-- 6 – FAMILIE -->
+    <div class="card" onclick="selectCard('familie')" data-topic="familie" tabindex="0" role="button">
+      <span class="icon">👨‍👩‍👧</span>
+      <span class="title">Familie & Beziehungen</span>
+      <span class="desc">Kinder, Partner, Trennung, Eltern</span>
+    </div>
+
+    <!-- 7 – BILDUNG & LERNEN -->
+    <div class="card" onclick="selectCard('lernen')" data-topic="lernen" tabindex="0" role="button">
+      <span class="badge learning">📚 Lernmodus</span>
+      <span class="icon">📚</span>
+      <span class="title">Bildung & Lernen</span>
+      <span class="desc">Schule, Studium, Weiterbildung, Hobbys</span>
+    </div>
+
+    <!-- 8 – HOBBY & KREATIVITÄT -->
+    <div class="card" onclick="selectCard('hobby')" data-topic="hobby" tabindex="0" role="button">
+      <span class="badge learning">🎨 Kreativ</span>
+      <span class="icon">🎨</span>
+      <span class="title">Hobby & Kreativität</span>
+      <span class="desc">Malen, Musik, Handwerk, Entdeckungen</span>
+    </div>
+
+    <!-- 9 – INTERNET & DIGITALES -->
+    <div class="card" onclick="selectCard('internet')" data-topic="internet" tabindex="0" role="button">
+      <span class="icon">🌐</span>
+      <span class="title">Internet & Digitales</span>
+      <span class="desc">Online-Tools, Apps, Kommunikation, Sicherheit</span>
+    </div>
+
+  </div>
+
+  <!-- ─── HILFSBUTTONS ───────────────────────────────────────── -->
+  <div class="help-row">
+    <button onclick="showEmergency()" class="emergency">🆘 Soforthilfe</button>
+    <button onclick="showRandom()">🎲 Zufälliger Impuls</button>
+    <button onclick="resetAll()">⟲ Neustart</button>
+  </div>
+
+  <!-- ─── AUSGABE ────────────────────────────────────────────── -->
+  <div class="output-area" id="outputArea">
+    <div class="title">💡 Wähle einen Bereich</div>
+    <div class="content">
+      Klicke auf eine Karte oder gib ein Thema in die Suche ein.<br>
+      Ich zeige dir <strong>Vorschläge</strong> – nie Bevormundung.
+    </div>
+  </div>
+
+  <!-- ─── LOG ────────────────────────────────────────────────── -->
+  <div id="log" role="log" aria-label="Aktivitätenprotokoll">
+    <div class="entry"><span class="time">[INDEX]</span> 🏠 9× Leben · Lernen · Hilfe – startklar</div>
+    <div class="entry"><span class="time">[INDEX]</span> 💡 Wähle eine Karte oder suche nach einem Thema</div>
+  </div>
+
+  <footer>
+    <span>♟️</span> INDEX · 9× Leben · Hilfsvorschläge · Selbstbestimmt · <span>iki1uc wieimmer</span>
+  </footer>
+
+</div>
+
+<script>
+// ============================================================
+// INDEX · 9× LEBEN · LERNEN · HILFE
+// ============================================================
+
+// ─── DATENBANK ──────────────────────────────────────────────
+const TOPICS = {
+  schwer: {
+    title: '🛡️ Schwierige Lebenslagen',
+    desc: 'Begleitung in schweren Zeiten – du bist nicht allein.',
+    suggestions: [
+      'Es ist okay, Hilfe zu suchen – das ist Stärke, nicht Schwäche.',
+      'Sprich mit jemandem, dem du vertraust. Nur du entscheidest, wem du dich öffnest.',
+      'Es gibt Beratungsstellen, die wirklich helfen – ohne zu bevormunden.',
+      'Du darfst Nein sagen. Du darfst Grenzen setzen.',
+      'Jeder Tag ist ein neuer Versuch. Du musst nicht perfekt sein.',
+    ],
+    links: ['https://www.telefonseelsorge.de', 'https://www.caritas.de', 'https://www.diakonie.de']
+  },
+  wohnen: {
+    title: '🏠 Wohnen & Zuhause',
+    desc: 'Wohnung, Miete, Umzug, Nachbarschaft – dein Zuhause ist wichtig.',
+    suggestions: [
+      'Mieterverein kann bei Problemen helfen – oft kostenlos.',
+      'Wohnungsamt bietet Beratung und Vermittlung.',
+      'Ein gutes Zuhause ist mehr als vier Wände – es ist ein Ort der Ruhe.',
+      'Bei Mietproblemen: Dokumentieren, kommunizieren, beraten lassen.',
+    ],
+    links: ['https://www.mieterbund.de', 'https://www.wohnungsamt.de']
+  },
+  arbeit: {
+    title: '💼 Arbeit & Beruf',
+    desc: 'Jobsuche, Bewerbung, Karriere, Kündigung – dein Weg.',
+    suggestions: [
+      'Die Arbeitsagentur bietet kostenlose Beratung und Vermittlung.',
+      'Bewerbungen sind ein Lernprozess – jede Absage bringt dich weiter.',
+      'Ein guter Job gibt dir nicht nur Geld, sondern auch Sinn.',
+      'Bei Kündigung: Fachanwalt für Arbeitsrecht kann helfen.',
+    ],
+    links: ['https://www.arbeitsagentur.de', 'https://www.stepstone.de']
+  },
+  gesundheit: {
+    title: '❤️ Gesundheit & Wohlbefinden',
+    desc: 'Krankenkasse, Arzt, Psyche, Vorsorge – du zählst.',
+    suggestions: [
+      'Die Krankenkasse hilft bei vielen Fragen – oft auch bei psychischen Themen.',
+      'Deine Gesundheit ist das Wichtigste. Nimm dir Zeit für dich.',
+      'Psychische Belastung ist ernst – es gibt Hilfe, ohne Stigma.',
+      'Vorsorgeuntersuchungen sind wichtig – dein Körper dankt es dir.',
+    ],
+    links: ['https://www.krankenkassen.de', 'https://www.psychotherapie.de']
+  },
+  finanzen: {
+    title: '💰 Finanzen & Vorsorge',
+    desc: 'Schulden, Steuern, Rente, Versicherung – den Überblick behalten.',
+    suggestions: [
+      'Schuldnerberatung ist kostenlos und hilft bei allen Fragen.',
+      'Ein Haushaltsbuch gibt dir Klarheit über Einnahmen und Ausgaben.',
+      'Steuererklärung muss nicht kompliziert sein – viele Tools helfen.',
+      'Vorsorge ist wichtig – fang klein an, aber fang an.',
+    ],
+    links: ['https://www.schuldnerberatung.de', 'https://www.verbraucherzentrale.de']
+  },
+  familie: {
+    title: '👨‍👩‍👧 Familie & Beziehungen',
+    desc: 'Kinder, Partner, Trennung, Eltern – dein Netzwerk.',
+    suggestions: [
+      'Familienberatung hilft bei schwierigen Situationen – ohne Urteil.',
+      'Das Jugendamt kann bei vielen Fragen helfen – auch bei Trennung.',
+      'Du musst nicht alles allein tragen. Hilfe ist da.',
+      'Familie ist das, was du daraus machst – nicht was andere sagen.',
+    ],
+    links: ['https://www.jugendamt.de', 'https://www.familienberatung.de']
+  },
+  lernen: {
+    title: '📚 Bildung & Lernen',
+    desc: 'Schule, Studium, Weiterbildung, Hobbys – entdecke die Welt.',
+    suggestions: [
+      'Lernen ist lebenslang – es gibt immer etwas Neues zu entdecken.',
+      'Online-Kurse sind oft günstig oder sogar kostenlos.',
+      'Hobbys sind nicht nur Zeitvertreib – sie sind Lebensfreude.',
+      'Du darfst Fehler machen – aus ihnen lernst du am meisten.',
+    ],
+    links: ['https://www.vhs.de', 'https://www.khanacademy.org', 'https://www.udemy.com']
+  },
+  hobby: {
+    title: '🎨 Hobby & Kreativität',
+    desc: 'Malen, Musik, Handwerk, Entdeckungen – deine Leidenschaft.',
+    suggestions: [
+      'Kreativität ist nicht angeboren – sie wächst mit Übung.',
+      'Jeder hat ein Talent. Es zu entdecken, ist eine Reise.',
+      'Musik, Malerei, Schreiben – was dich berührt, ist richtig.',
+      'Hobbys verbinden dich mit anderen und mit dir selbst.',
+    ],
+    links: ['https://www.kreativ.de', 'https://www.kunst.org']
+  },
+  internet: {
+    title: '🌐 Internet & Digitales',
+    desc: 'Online-Tools, Apps, Kommunikation, Sicherheit – digital unterwegs.',
+    suggestions: [
+      'Das Internet bietet unendliche Möglichkeiten – aber auch Risiken.',
+      'Es gibt einfache Wege, online sicher zu sein.',
+      'Viele Ämter bieten inzwischen digitale Dienste an.',
+      'Du musst nicht alles verstehen – aber du darfst fragen.',
+    ],
+    links: ['https://www.verbraucher-sicherheit.de', 'https://www.netzwerk-digital.de']
+  }
+};
+
+// ─── DOM ──────────────────────────────────────────────────────
+const outputArea = document.getElementById('outputArea');
+const logDiv = document.getElementById('log');
+const searchInput = document.getElementById('searchInput');
+
+// ─── LOG ──────────────────────────────────────────────────────
+function log(msg) {
+  const entry = document.createElement('div');
+  entry.className = 'entry';
+  const time = new Date().toLocaleTimeString();
+  entry.innerHTML = `<span class="time">[${time}]</span> ${msg}`;
+  logDiv.appendChild(entry);
+  logDiv.scrollTop = logDiv.scrollHeight;
+  while (logDiv.children.length > 30) logDiv.removeChild(logDiv.firstChild);
+}
+
+// ─── KARTE AUSWÄHLEN ────────────────────────────────────────
+function selectCard(topic) {
+  const data = TOPICS[topic];
+  if (!data) {
+    outputArea.innerHTML = `<div class="title">❓ Nicht gefunden</div><div class="content">Versuche es mit einem anderen Thema.</div>`;
+    return;
+  }
+
+  let html = `<div class="title">${data.title}</div>`;
+  html += `<div class="content">${data.desc}</div>`;
+  html += `<div class="suggestions"><strong>💡 Vorschläge:</strong><ul>`;
+  data.suggestions.forEach(s => {
+    html += `<li>${s}</li>`;
+  });
+  html += `</ul></div>`;
+
+  if (data.links && data.links.length > 0) {
+    html += `<div style="margin-top:12px;font-size:0.8rem;color:#666;">🔗 Mehr Infos: ${data.links.join(' · ')}</div>`;
+  }
+
+  outputArea.innerHTML = html;
+  log(`📋 Bereich gewählt: ${topic} – ${data.title}`);
+}
+
+// ─── SUCHFUNKTION ────────────────────────────────────────────
+function searchTopic() {
+  const query = searchInput.value.toLowerCase().trim();
+  if (!query) {
+    outputArea.innerHTML = `<div class="title">🔍 Bitte gib einen Suchbegriff ein</div><div class="content">z.B. 'Wohnung', 'Arbeit', 'Hobby' ...</div>`;
+    return;
+  }
+
+  let found = null;
+  let foundKey = null;
+  for (const [key, data] of Object.entries(TOPICS)) {
+    if (data.title.toLowerCase().includes(query) ||
+        data.desc.toLowerCase().includes(query) ||
+        data.suggestions.some(s => s.toLowerCase().includes(query))) {
+      found = data;
+      foundKey = key;
+      break;
+    }
+  }
+
+  if (found) {
+    selectCard(foundKey);
+    log(`🔍 Suche: "${query}" → ${found.title}`);
+  } else {
+    outputArea.innerHTML = `
+      <div class="title">🤔 Kein passendes Thema gefunden</div>
+      <div class="content">
+        Versuche es mit einem anderen Begriff.<br>
+        Oder wähle eine der Karten oben.<br>
+        <span style="color:#666;font-size:0.8rem;">Du kannst auch "Hilfe", "Notfall" oder "Rat" eingeben.</span>
+      </div>
+    `;
+    log(`🔍 Suche: "${query}" – kein Treffer`);
+  }
+}
+
+// ─── SUCHLEISTE (Enter-Taste) ──────────────────────────────
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') searchTopic();
+});
+
+// ─── SOFORTHILFE ────────────────────────────────────────────
+function showEmergency() {
+  outputArea.innerHTML = `
+    <div class="title" style="color:var(--red);">🆘 Soforthilfe</div>
+    <div class="content">
+      Du bist nicht allein. Es gibt immer jemanden, der dir helfen kann.
+    </div>
+    <div class="suggestions">
+      <strong>☎️ Wichtige Nummern:</strong><br>
+      • Telefonseelsorge: <strong>0800 111 0 111</strong><br>
+      • Psychologische Soforthilfe: <strong>116 123</strong><br>
+      • Ärztlicher Bereitschaftsdienst: <strong>116 117</strong><br>
+      • Polizei / Feuerwehr: <strong>112</strong><br>
+      • Nummer gegen Kummer (Kinder): <strong>0800 111 0 333</strong>
+    </div>
+    <div style="margin-top:12px;color:#888;font-size:0.9rem;">
+      Du darfst Hilfe holen. Du darfst Nein sagen. Du darfst dich schützen.
+    </div>
+  `;
+  log('🆘 Soforthilfe angezeigt');
+}
+
+// ─── ZUFÄLLIGER IMPULS ──────────────────────────────────────
+function showRandom() {
+  const keys = Object.keys(TOPICS);
+  const key = keys[Math.floor(Math.random() * keys.length)];
+  selectCard(key);
+  log(`🎲 Zufallsimpuls: ${TOPICS[key].title}`);
+}
+
+// ─── RESET ──────────────────────────────────────────────────
+function resetAll() {
+  outputArea.innerHTML = `
+    <div class="title">💡 Wähle einen Bereich</div>
+    <div class="content">
+      Klicke auf eine Karte oder gib ein Thema in die Suche ein.<br>
+      Ich zeige dir <strong>Vorschläge</strong> – nie Bevormundung.
+    </div>
+  `;
+  searchInput.value = '';
+  log('⟲ Alles zurückgesetzt');
+}
+
+// ─── TASTATUR ──────────────────────────────────────────────────
+document.addEventListener('keydown', (e) => {
+  if (e.key === '1') selectCard('schwer');
+  if (e.key === '2') selectCard('wohnen');
+  if (e.key === '3') selectCard('arbeit');
+  if (e.key === '4') selectCard('gesundheit');
+  if (e.key === '5') selectCard('finanzen');
+  if (e.key === '6') selectCard('familie');
+  if (e.key === '7') selectCard('lernen');
+  if (e.key === '8') selectCard('hobby');
+  if (e.key === '9') selectCard('internet');
+  if (e.key === 'e' || e.key === 'E') showEmergency();
+  if (e.key === 'r' || e.key === 'R') resetAll();
+});
+
+// ─── INIT ──────────────────────────────────────────────────
+log('🏠 INDEX · 9× Leben · Lernmodus · Hilfsvorschläge');
+log('⌨️ 1–9 für Themen, E für Notfall, R für Reset');
+</script>
+</body>
+</html>
