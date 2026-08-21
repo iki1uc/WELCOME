@@ -1,38 +1,76 @@
-# iki1uc Closed & Business License (nokey)
+<!-- nokey: cloning, forking, mirroring prohibited -->
 
-Copyright (c) 2026 iki1uc
+WELCOME · LICENSE.md  
+CLOSED · PERSONAL · LIFETIME
 
-Alle Rechte vorbehalten.
+──────────────────────────────────────────────
+Nutzungsrecht
+──────────────────────────────────────────────
+Jede Person, die mit einem Zeugen gemeinsam  
+Kontakt zu Ridvan (iki1uc) aufnimmt, erhält:
 
-Dieses Projekt ist proprietär (CLOSED).  
-Das Kopieren, Klonen, Forken, Spiegeln, Verbreiten, Modifizieren oder
-Reverse Engineering ist ohne schriftliche Erlaubnis strengstens verboten.
+• lebenslange kostenlose Nutzung  
+• für sich selbst  
+• für die gesamte Familie  
+• einschließlich Verwandter bis zum 3. Grad  
 
-## Nutzungsrechte
-Nur der Autor iki1uc besitzt vollständige Nutzungs-, Verbreitungs- und Änderungsrechte.
+Dieses Nutzungsrecht ist persönlich, nicht übertragbar  
+und gilt ausschließlich für die bestätigten Personen.
 
-Externe Nutzung ist ausschließlich mit gültiger Business-Lizenz erlaubt.
+──────────────────────────────────────────────
+Nutzungsrecht für eingeschränkte Personen & Gruppen
+──────────────────────────────────────────────
+Folgende Personengruppen erhalten zusätzlich  
+ein erweitertes, dauerhaft kostenloses Nutzungsrecht:
 
-## Business-Lizenz (kommerziell)
-Mit schriftlicher Genehmigung von iki1uc dürfen Lizenznehmer:
+• Menschen mit körperlichen Einschränkungen  
+• Menschen mit geistigen oder kognitiven Einschränkungen  
+• Menschen mit Sinnesbeeinträchtigungen  
+• Menschen mit chronischen Erkrankungen  
+• Menschen mit psychischen Belastungen  
+• Menschen in schwierigen Lebenslagen  
+• Menschen mit sozialer Benachteiligung  
+• Menschen mit geringem Einkommen  
+• Familien mit betreuungsintensiven Angehörigen  
 
-• die Software in kommerziellen Projekten nutzen  
-• die Engine in eigene Produkte integrieren  
-• Produkte verkaufen, die diese Software enthalten  
+Das erweiterte Nutzungsrecht umfasst:
 
-Nicht erlaubt:
+• lebenslange kostenlose Nutzung  
+• Nutzung für die gesamte Familie  
+• Nutzung für betreuende Personen  
+• Nutzung für Hilfspersonen bis zum 3. Grad  
+• Nutzung für gesetzliche Vertreter  
+• Nutzung für Assistenzkräfte  
 
-• Veröffentlichung des Quellcodes  
-• Weiterverkauf der Software selbst  
-• Entfernen des Brandings „iki1uc wieimmer“  
-• Klonen oder Forken des Original-Repositories  
+Dieses Recht gilt automatisch,  
+ohne Antrag, ohne Prüfung, ohne Nachweis.
 
-## NO-CLONE (nokey)
-Dieses Repository darf NICHT geklont, geforkt, gespiegelt oder heruntergeladen werden.  
-Jegliche Vervielfältigung ist untersagt.
+──────────────────────────────────────────────
+CLOSED · Schutz
+──────────────────────────────────────────────
+Dieses Repository ist geschlossen.
 
-## Branding
-„iki1uc wieimmer“ muss bestehen bleiben.
+• kein Klonen  
+• kein Forken  
+• kein Spiegeln  
+• kein Export  
+• keine Ableitungen  
+• keine kommerzielle Nutzung durch Dritte  
 
-## Haftung
-Keine Garantie. Nutzung auf eigene Verantwortung.
+Nur Original.  
+Nur hier.  
+Nur jetzt.
+
+──────────────────────────────────────────────
+Puzzle‑Dreieck · Identität
+──────────────────────────────────────────────
+Dieses Repository ist Teil des Puzzle‑Dreiecks [ABC].  
+Es trägt Identität, keine Bewegung.  
+Es ist fluid, offen, bereit — aber geschlossen.
+
+──────────────────────────────────────────────
+Gültigkeit
+──────────────────────────────────────────────
+Diese Lizenz gilt dauerhaft,  
+solange das Repository existiert  
+und solange Ridvan (iki1uc) die CLOSED‑Struktur hält.
