@@ -1,12 +1,13 @@
 <!-- nokey: cloning, forking, mirroring prohibited -->
 
 WELCOME · LICENSE.md  
-CLOSED · PERSONAL · LIFETIME
+CLOSED · PERSONAL · LIFETIME  
+NO-DISCLOSURE · NO-PROOF
 
 ──────────────────────────────────────────────
 Nutzungsrecht
 ──────────────────────────────────────────────
-Jede Person, die mit einem Zeugen gemeinsam  
+Jede Person, die gemeinsam mit einem Zeugen  
 Kontakt zu Ridvan (iki1uc) aufnimmt, erhält:
 
 • lebenslange kostenlose Nutzung  
@@ -18,9 +19,26 @@ Dieses Nutzungsrecht ist persönlich, nicht übertragbar
 und gilt ausschließlich für die bestätigten Personen.
 
 ──────────────────────────────────────────────
-Nutzungsrecht für eingeschränkte Personen & Gruppen
+Keine Nachweise · Keine Offenlegung
 ──────────────────────────────────────────────
-Folgende Personengruppen erhalten zusätzlich  
+Für die Nutzung gelten folgende Grundsätze:
+
+• keine Nachweise erforderlich  
+• keine Dokumente erforderlich  
+• keine Diagnosen erforderlich  
+• keine Offenlegung von Einschränkungen  
+• keine Offenlegung persönlicher Daten  
+• keine Prüfung, kein Antrag, keine Begründung  
+
+Ein Zeuge genügt.  
+Eine Bestätigung genügt.  
+Ohne Angabe, was man hat.  
+Ohne Angabe, warum man es braucht.
+
+──────────────────────────────────────────────
+Erweitertes Nutzungsrecht für eingeschränkte Personen
+──────────────────────────────────────────────
+Folgende Gruppen erhalten automatisch  
 ein erweitertes, dauerhaft kostenloses Nutzungsrecht:
 
 • Menschen mit körperlichen Einschränkungen  
@@ -33,17 +51,8 @@ ein erweitertes, dauerhaft kostenloses Nutzungsrecht:
 • Menschen mit geringem Einkommen  
 • Familien mit betreuungsintensiven Angehörigen  
 
-Das erweiterte Nutzungsrecht umfasst:
-
-• lebenslange kostenlose Nutzung  
-• Nutzung für die gesamte Familie  
-• Nutzung für betreuende Personen  
-• Nutzung für Hilfspersonen bis zum 3. Grad  
-• Nutzung für gesetzliche Vertreter  
-• Nutzung für Assistenzkräfte  
-
 Dieses Recht gilt automatisch,  
-ohne Antrag, ohne Prüfung, ohne Nachweis.
+ohne Nachweis, ohne Prüfung, ohne Offenlegung.
 
 ──────────────────────────────────────────────
 CLOSED · Schutz
